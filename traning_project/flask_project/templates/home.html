@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ user }} Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: rgb(0, 26, 33);
+            color: white;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            height: 100px;
+            background-color: rgb(30, 30, 97);
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            list-style: none;
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+        }
+
+        nav ul li a:hover {
+            text-decoration: none;
+            color: rgb(230, 230, 250);
+            font-size: 1.03em;
+        }
+
+        .left {
+            font-size: 1.5rem;
+        }
+
+        .FirstSection {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 100px 0;
+        }
+
+        .FirstSection>div {
+            width: 40%;
+        }
+
+        .leftsection {
+            font-size: 3rem;
+        }
+
+        .rightsection img {
+            width: 100%;
+        }
+
+        .purple {
+            color: rgb(168, 43, 226);
+        }
+
+        .SecondSection {
+            max-width: 80vw;
+            margin: auto;
+            padding: 50px 0;
+        }
+
+        /* Add the new styles for blog posts */
+        .blog-post {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .post-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .post-date {
+            color: #999;
+            font-size: 0.8em;
+        }
+
+        .post-image img {
+            max-width: 100%;
+            height: auto;
+            margin-top: 10px;
+        }
+
+        .post-content {
+            line-height: 1.6;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="left">{{user}} Portfolio</div>
+            <div class="right">
+                <ul>
+                    <li><a href="/home">Home</a></li>
+                    <li><a href="/">About</a></li>
+                    <li><a href="/">Service</a></li>
+                    <li><a href="/">Projects</a></li>
+                    <li><a href="/">Contact Me</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section class="FirstSection">
+            <div class="leftsection">
+                Hi, My Name is<span class="purple"> {{ user }}</span>
+                <div>I am a Python Trainee</div>
+                <span id="element"></span>
+
+                <form action="{{ url_for('post_data') }}" method="post" enctype="multipart/form-data">
+                    <input type="text" name="post_content" placeholder="enter post">
+                    <input type="file" name="post_photo">
+                    <input type="text" name="post_description" placeholder="enter a description">
+                    <button type="submit">Post</button>
+                </form>
+
+                {% for post in posts %}
+                <div class="blog-post">
+                    <div class="post-header">
+                        <h2>{{ post.content }}</h2>
+                        <p class="post-date">{{ post.time.strftime('%Y-%m-%d %H:%M:%S') }}</p>
+                    </div>
+                    <div class="post-image">
+                        <img src="{{ url_for('static', filename='uploads/' + post.photo_filename) }}" alt="POST IMAGE">
+                    </div>
+                    <div class="post-content">
+                        <p>{{ post.description }}</p>
+                    </div>
+                    <form action="{{ url_for('delete_post', post_id=post.id) }}" method="post">
+                        <button type="submit">Delete</button>
+                    </form>
+                </div>
+                {% endfor %}
+
+            </div>
+        </section>
+        <section class="SecondSection">
+            <h1>Past Studies</h1>
+            {% if user_data %}
+            <p>Email: {{ user_data.email }}</p>
+            <p>Date of Birth: {{ user_data.date }}</p>
+            {% else %}
+            <p>No user data available</p>
+            {% endif %}
+        </section>
+    </main>
+</body>
+
+</html>

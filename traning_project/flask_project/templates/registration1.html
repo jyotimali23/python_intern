@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration Form</title>
+</head>
+<style> h2{
+    font-family: Sans-serif; 
+    font-size: 24px;     
+    font-style: normal; 
+    font-weight: bold; 
+    color: blue;
+    text-align: center; 
+    text-decoration: underline
+   }
+   table{
+ font-family: verdana; 
+ color:white; 
+ font-size: 16px; 
+ font-style: normal;
+ font-weight: bold;
+ background: linear-gradient(to bottom, #33ccff 0%, #ff99cc 100%);  
+ border-collapse: collapse; 
+ border: 4px solid #000000;
+ border-style: dashed;
+  
+}
+table.inner{
+ border: 10px
+ .
+}
+input[type=text], input[type=email], input[type=number]{
+ width: 50%;
+ padding: 6px 12px;
+ margin: 5px 0;
+ box-sizing: border-box;
+}
+input[type=submit], input[type=reset]{
+ width: 25%;
+ padding: 8px 12px;
+ margin: 5px 0;
+ box-sizing: border-box;
+}
+
+</style>
+
+<body>
+   
+    
+    <h2>Registration Form</h2>
+    <form action="/add" method="post" >
+        <table align="center" cellpadding="10">
+            <tr>
+                <td>user_id</td>
+                <td><input type="text" name="id" required /></td>
+            </tr>
+            <tr>
+                <td>name</td>
+                <td><input type="text" name="name" required /></td>
+            </tr>
+            <tr>
+                <td>email</td>
+                <td><input type="email" name="email" required /></td>
+            </tr>
+            <tr>
+                <td>password</td>
+                <td><input type="text" name="password" required /></td>
+            </tr>
+            <tr>
+                
+                <td colspan="2" align="center">
+                    <button type="submit">Add</button>
+                    <input type="reset" value="Reset">
+                </td>
+            </tr>
+        </table>
+    </form>
+    <script>
+        
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        
+        .login-container {
+            text-align: center;
+            position: relative;
+        }
+
+        .login-form {
+            display: inline-block;
+            text-align: left;
+        }
+        
+        label, input, a {
+            display: block;
+            margin: 10px;
+        }
+        
+        .btn {
+            display: inline-block;
+            margin: 5px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-form">
+            <h1>Login</h1>
+            <form action="/check_login" method="post">
+                <label>Email:</label>
+                <input type="email" name="email" required>
+                <label>Password:</label>
+                <input type="password" name="password" required>
+                <button class="btn" type="submit">Login</button>
+            </form>
+            
+            <p><a class="btn" href="/reset_password">Forgot Password</a></p>
+            <p>Don't have an account? <a class="btn" href="/singin">Sign Up</a></p>
+        </div>
+    </div>
+</body>
+</html>
